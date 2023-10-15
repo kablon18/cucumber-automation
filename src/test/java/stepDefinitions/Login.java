@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import static Constants.LoginConstants.*;
-import static Functions.LoginFunctions.verifyAlertMessage;
 
 public class Login extends BaseClass {
 
@@ -24,29 +23,36 @@ public class Login extends BaseClass {
         driver.manage().window().maximize();
     }
 
-    @Given("user navigates to webdriver university login page")
-    public void user_navigates_to_webdriver_university_login_page() {
-        navigateToUrl(loginURL);
-    }
-    @When("user enters username {word}")
-    public void user_enters_username(String userName) {
-        LoginFunctions.enterUserName(userName);
-    }
-    @When("user enters password {word}")
-    public void user_enters_password(String password) {
-        LoginFunctions.enterPassword(password);
-    }
-    @When("user clicks on login button")
-    public void user_clicks_on_login_button() {
-        LoginFunctions.loginUser();
-    }
-    @Then("user should receive a successful login pop-up message - {string}")
-    public void userShouldReceiveASuccessfulLoginPopUpMessageValidationSucceeded() {
-    }
-
     @After
     public void quitDriver(){
         driver.quit();
+    }
+
+        @Given("user navigates to webdriver university login page")
+        public void user_navigates_to_webdriver_university_login_page() {
+            navigateToUrl(loginURL);
+        }
+        @When("user enters username {word}")
+        public void user_enters_username(String userName) {
+            LoginFunctions.enterUserName(userName);
+        }
+        @When("user enters password {word}")
+        public void user_enters_password(String password) {
+            LoginFunctions.enterPassword(password);
+        }
+
+        @When("user enters wrong password {string}")
+        public void userEntersWrongPassword(String password) {
+            LoginFunctions.enterPassword(password);
+        }
+        @When("user clicks on login button")
+        public void user_clicks_on_login_button() {
+            LoginFunctions.loginUser();
+        }
+
+    @Then("user should receive a login pop-up message {string}")
+    public void userShouldReceiveALoginPopUpMessage(String message) {
+        LoginFunctions.verifyAlertMessage(message);
     }
 
 

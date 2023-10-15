@@ -2,6 +2,7 @@ package BaseClass;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,6 +54,10 @@ public abstract class BaseClass {
 
     public static WebElement findElement(By locator){
         return driver.findElement(locator);
+    }
+
+    public String generateRandomNumber(int length){
+        return RandomStringUtils.randomNumeric(length);
     }
 
 

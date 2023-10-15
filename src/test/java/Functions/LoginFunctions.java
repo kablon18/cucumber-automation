@@ -11,8 +11,9 @@ public class LoginFunctions extends BaseClass {
         findElement(Common.userName).sendKeys(userName);
     }
 
-    public static void enterPassword(String password){
+    public static String enterPassword(String password){
         findElement(Common.password).sendKeys(password);
+        return password;
     }
 
     public static void loginUser(){
@@ -23,6 +24,9 @@ public class LoginFunctions extends BaseClass {
         String alert = driver.switchTo().alert().getText();
         if(alert.contains(message)){
            log("Login Successful");
+        }
+        else{
+            log("Login Unsuccessful");
         }
     }
 
