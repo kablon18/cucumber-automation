@@ -12,12 +12,12 @@ public class LoginFunctions extends BaseClass {
     }
 
     public static String enterPassword(String password){
-        findElement(Common.password).sendKeys(password);
+        findElement(commonLocators.password).sendKeys(password);
         return password;
     }
 
     public static void loginUser(){
-        findElement(Common.loginButton).click();
+        findElement(commonLocators.loginButton).click();
     }
 
     public static void verifyAlertMessage(String message){
