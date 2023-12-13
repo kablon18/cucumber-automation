@@ -25,7 +25,7 @@ public class Login extends BaseClass {
 
     @After
     public void quitDriver(){
-        driver.quit();
+            driver.quit();
     }
 
         @Given("user navigates to webdriver university login page")
